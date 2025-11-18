@@ -375,16 +375,25 @@
 
     function resize() {
       dpr = window.devicePixelRatio || 1;
-      width = canvas.clientWidth;
-      height = canvas.clientHeight;
-
+    
+      // FIX: always compute size from parent, not clientWidth
+      const rect = canvas.parentElement.getBoundingClientRect();
+      width = rect.width;
+      height = rect.height;
+    
       canvas.width = width * dpr;
       canvas.height = height * dpr;
+    
+      // FIX: ensure CSS size matches drawing buffer size
+      canvas.style.width = width + "px";
+      canvas.style.height = height + "px";
+    
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
+    
       setupColumns();
       precomputeNoiseField();
     }
+
 
     function setupColumns() {
       cols = [];
