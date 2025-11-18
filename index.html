@@ -523,8 +523,13 @@
       mouse.active = false;
     });
 
-    resize();
-    requestAnimationFrame(drawFrame);
+    // resize();
+    // requestAnimationFrame(drawFrame);
+    window.addEventListener("load", () => {
+      resize();
+      requestAnimationFrame(drawFrame);
+    });
+
   </script>
 </body>
 </html>
