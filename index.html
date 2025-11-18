@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Creative + Developer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Fonts – pick whatever you like -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Anton&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --page-bg: #000000;
+      --main-red: #ff0040;
+      --line-color: #111111;
+      --nav-height: 70px;
+      --bottom-height: 140px;
+      --frame-padding: 10px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden; /* no scroll */
+    }
+
+    body {
+      background: var(--page-bg);
+      font-family: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      color: #111;
+    }
+
+    .frame {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      padding: var(--frame-padding);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .inner {
+      position: relative;
+      flex: 1;
+      background: var(--main-red);
+      border: 2px solid #000;
+      display: grid;
+      grid-template-rows: var(--nav-height) minmax(0, 1fr) var(--bottom-height);
+    }
+
+    /* ============ TOP NAV ============ */
+
+    .top-bar {
+      display: grid;
+      grid-template-columns: 260px minmax(0, 1fr) 320px;
+      border-bottom: 2px solid #000;
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .top-left {
+      border-right: 2px solid #000;
+      display: flex;
+      align-items: stretch;
+    }
+
+    .logo-box {
+      width: 72px;
+      border-right: 2px solid #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 20px;
+    }
+
+    .logo-box span {
+      border: 2px solid #000;
+      padding: 6px 10px;
+    }
+
+    .top-left-text {
+      flex: 1;
+      padding: 10px 14px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      line-height: 1.3;
+    }
+
+    .top-left-text .label {
+      opacity: 0.7;
+    }
+
+    .top-mid {
+      border-right: 2px solid #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 38px;
+    }
+
+    .top-mid a {
+      text-decoration: none;
+      color: inherit;
+      position: relative;
+    }
+
+    .top-mid a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0;
+      height: 1px;
+      background: #000;
+      transition: width 0.2s ease;
+    }
+
+    .top-mid a:hover::after {
+      width: 100%;
+    }
+
+    .top-right {
+      display: grid;
+      grid-template-columns: 50px 1fr 70px;
+      align-items: stretch;
+    }
+
+    .top-right-mode {
+      border-right: 2px solid #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+
+    .top-right-info {
+      border-right: 2px solid #000;
+      padding: 10px 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 6px;
+      font-size: 10px;
+      line-height: 1.4;
+    }
+
+    .top-right-info span:first-child {
+      font-weight: 500;
+    }
+
+    .top-right-qr {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-left: 2px solid #000;
+      background: rgba(0, 0, 0, 0.08);
+      font-size: 9px;
+      text-align: center;
+      padding: 4px;
+    }
+
+    /* ============ MIDDLE: CANVAS ============ */
+
+    .middle {
+      position: relative;
+      overflow: hidden;
+    }
+
+    #flowCanvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    /* thin little borders top/bottom of middle block */
+    .middle-border-top,
+    .middle-border-bottom {
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 18px;
+      border-top: 2px solid #000;
+      border-bottom: 2px solid #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 8px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      mix-blend-mode: multiply;
+      pointer-events: none;
+    }
+
+    .middle-border-top {
+      top: 0;
+    }
+
+    .middle-border-bottom {
+      bottom: 0;
+    }
+
+    .middle-border-top span,
+    .middle-border-bottom span {
+      opacity: 0.8;
+    }
+
+    /* ============ BOTTOM BANNER ============ */
+
+    .bottom-banner {
+      border-top: 2px solid #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-inline: 24px;
+      font-family: "Anton", system-ui, sans-serif;
+      font-size: clamp(46px, 8vw, 80px);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .bottom-banner span {
+      display: inline-block;
+    }
+
+    .bottom-banner .plus {
+      padding-inline: 14px;
+      font-size: 0.7em;
+      transform: translateY(-3px);
+    }
+
+    @media (max-width: 900px) {
+      .top-bar {
+        grid-template-columns: 1.2fr 1fr 1.4fr;
+      }
+      .top-right {
+        grid-template-columns: 40px 1fr 60px;
+      }
+      .bottom-banner {
+        font-size: clamp(38px, 8vw, 60px);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .top-bar {
+        font-size: 9px;
+        grid-template-columns: 220px minmax(0, 1fr) 220px;
+      }
+      .top-left-text {
+        display: none; /* simplify for small */
+      }
+      .top-left {
+        justify-content: flex-start;
+      }
+      .top-mid {
+        gap: 20px;
+      }
+      .top-right {
+        grid-template-columns: 1fr;
+        border-left: 2px solid #000;
+      }
+      .top-right-mode,
+      .top-right-info,
+      .top-right-qr {
+        border-right: none;
+        border-left: none;
+        border-top: 2px solid #000;
+      }
+    }
+
+    @media (max-width: 540px) {
+      .bottom-banner {
+        font-size: 30px;
+        letter-spacing: 0.08em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <div class="inner">
+      <!-- TOP NAV -->
+      <header class="top-bar">
+        <!-- left block -->
+        <div class="top-left">
+          <div class="logo-box">
+            <span>NW</span> <!-- change to your initials -->
+          </div>
+          <div class="top-left-text">
+            <div class="label">Contemplating the fluidity of it all</div>
+            <div>
+              <div>Creative developer</div>
+              <div>Client projects & experiments</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- middle nav links -->
+        <nav class="top-mid">
+          <a href="#about">About</a>
+          <a href="#work">Work</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <!-- right info / QR -->
+        <div class="top-right">
+          <div class="top-right-mode">
+            ☼
+          </div>
+          <div class="top-right-info">
+            <span>Coding from somewhere on Earth.</span>
+            <span>Available for remote collaborations.</span>
+          </div>
+          <div class="top-right-qr">
+            QR / link block<br />placeholder
+          </div>
+        </div>
+      </header>
+
+      <!-- MIDDLE / FLOW FIELD -->
+      <main class="middle">
+        <canvas id="flowCanvas"></canvas>
+
+        <div class="middle-border-top">
+          <span>EXPERIMENTAL INTERFACES ● CREATIVE DEVELOPMENT ●</span>
+        </div>
+        <div class="middle-border-bottom">
+          <span>EXPERIMENTAL INTERFACES ● CREATIVE DEVELOPMENT ●</span>
+        </div>
+      </main>
+
+      <!-- BOTTOM BANNER -->
+      <footer class="bottom-banner">
+        <span>CREATIVE</span>
+        <span class="plus">+</span>
+        <span>DEVELOPER</span>
+      </footer>
+    </div>
+  </div>
+
+  <script>
+    /**
+     * Hybrid-ish approach:
+     * - We precompute a "noise field" in an offscreen buffer based on sin/cos combos.
+     * - The main canvas uses that field to displace vertical polylines.
+     * - Mouse adds local disturbance.
+     */
+
+    const canvas = document.getElementById('flowCanvas');
+    const ctx = canvas.getContext('2d');
+
+    let width, height, dpr;
+    let cols = [];
+    const columnSpacing = 18;  // distance between vertical lines
+    const rowSpacing = 10;     // distance between points along each line
+
+    const noiseField = [];
+    const noiseCols = 160;
+    const noiseRows = 80;
+
+    let mouse = { x: 0, y: 0, active: false };
+    let startTime = performance.now();
+
+    function resize() {
+      dpr = window.devicePixelRatio || 1;
+      width = canvas.clientWidth;
+      height = canvas.clientHeight;
+
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      setupColumns();
+      precomputeNoiseField();
+    }
+
+    function setupColumns() {
+      cols = [];
+      const marginX = 10;
+      for (let x = marginX; x <= width - marginX; x += columnSpacing) {
+        cols.push({
+          x,
+          phase: Math.random() * Math.PI * 2,
+          amp: 32 + Math.random() * 28
+        });
+      }
+    }
+
+    function precomputeNoiseField() {
+      noiseField.length = 0;
+      for (let j = 0; j < noiseRows; j++) {
+        const row = [];
+        for (let i = 0; i < noiseCols; i++) {
+          // simple smooth value using trig – acts as fake 2D noise
+          const nx = i / noiseCols;
+          const ny = j / noiseRows;
+          const v =
+            Math.sin(nx * Math.PI * 2) * 0.55 +
+            Math.cos((nx + ny) * Math.PI * 2) * 0.3 +
+            Math.sin(ny * Math.PI * 4) * 0.25;
+          row.push(v);
+        }
+        noiseField.push(row);
+      }
+    }
+
+    function sampleNoise(x, y, timeNorm) {
+      // map x,y to [0, noiseCols/Rows)
+      const nx = (x / width + timeNorm * 0.05) % 1;
+      const ny = (y / height + timeNorm * 0.03) % 1;
+      let fx = nx * (noiseCols - 1);
+      let fy = ny * (noiseRows - 1);
+      const ix = Math.floor(fx);
+      const iy = Math.floor(fy);
+      const tx = fx - ix;
+      const ty = fy - iy;
+
+      const ix2 = (ix + 1) % noiseCols;
+      const iy2 = (iy + 1) % noiseRows;
+
+      const v00 = noiseField[iy][ix];
+      const v10 = noiseField[iy][ix2];
+      const v01 = noiseField[iy2][ix];
+      const v11 = noiseField[iy2][ix2];
+
+      // simple bilinear interpolation
+      const v0 = v00 * (1 - tx) + v10 * tx;
+      const v1 = v01 * (1 - tx) + v11 * tx;
+      const v = v0 * (1 - ty) + v1 * ty;
+
+      return v; // about [-1,1]
+    }
+
+    function drawFrame(now) {
+      const elapsed = now - startTime;
+      const t = elapsed * 0.001;
+
+      // background solid red
+      ctx.fillStyle = '#ff0040';
+      ctx.fillRect(0, 0, width, height);
+
+      ctx.lineWidth = 1;
+      ctx.strokeStyle = '#111111';
+
+      const mouseInfluenceRadius = Math.min(width, height) * 0.3;
+
+      for (let c = 0; c < cols.length; c++) {
+        const col = cols[c];
+        ctx.beginPath();
+        let firstPoint = true;
+
+        for (let y = -40; y <= height + 40; y += rowSpacing) {
+          // base noise displacement
+          const timeNorm = t * 0.15;
+          const n = sampleNoise(col.x * 0.7, y, timeNorm);
+
+          // smooth second layer
+          const n2 = sampleNoise(col.x * 0.3 + 200, y * 0.6 + 100, timeNorm * 1.3);
+
+          let offsetX = n * col.amp + n2 * (col.amp * 0.4);
+
+          // mouse disturbance
+          if (mouse.active) {
+            const dxm = col.x - mouse.x;
+            const dym = y - mouse.y;
+            const dist = Math.sqrt(dxm * dxm + dym * dym);
+
+            if (dist < mouseInfluenceRadius) {
+              const power = 1 - dist / mouseInfluenceRadius;
+              const dir = dxm > 0 ? 1 : -1;
+              offsetX += dir * power * 55;
+            }
+          }
+
+          const px = col.x + offsetX;
+          const py = y;
+
+          if (firstPoint) {
+            ctx.moveTo(px, py);
+            firstPoint = false;
+          } else {
+            ctx.lineTo(px, py);
+          }
+        }
+
+        ctx.stroke();
+      }
+
+      requestAnimationFrame(drawFrame);
+    }
+
+    window.addEventListener('resize', resize);
+
+    canvas.addEventListener('pointermove', (e) => {
+      const rect = canvas.getBoundingClientRect();
+      mouse.x = e.clientX - rect.left;
+      mouse.y = e.clientY - rect.top;
+      mouse.active = true;
+    });
+
+    canvas.addEventListener('pointerleave', () => {
+      mouse.active = false;
+    });
+
+    resize();
+    requestAnimationFrame(drawFrame);
+  </script>
+</body>
+</html>
