@@ -9,268 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html, body {
-      width: 100%;
-      height: 100%;
-      overflow: hidden; /* no scroll */
-      background: #050608;
-      color: #f5f5f5;
-      font-family: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-    }
-
-    body {
-      position: relative;
-    }
-
-    /* ========================
-       COLORFUL BLUR BACKGROUND LAYER
-    ========================== */
-
-    #matrixCanvas {
-      position: fixed;
-      inset: 0;
-      z-index: 1; /* above black bg, below content */
-      width: 100vw;
-      height: 100vh;
-      display: block;
-      pointer-events: none;
-    }
-
-    /* Blur overlay to enhance the colorful blur effect */
-    .matrix-blur {
-      position: fixed;
-      inset: 0;
-      backdrop-filter: blur(40px);
-      z-index: 2;
-      pointer-events: none;
-    }
-
-    /* Canvas behind everything */
-    #hero-canvas {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      display: block;
-      pointer-events: none;
-    }
-
-    .page {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      padding: 24px 32px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      z-index: 10; /* above all canvas layers */
-    }
-
-    /* Top nav */
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 0.9rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .nav-left,
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-    }
-
-    .nav a {
-      text-decoration: none;
-      color: inherit;
-      opacity: 0.7;
-      transition: opacity 0.2s ease, transform 0.2s ease;
-    }
-
-    .nav a:hover {
-      opacity: 1;
-      transform: translateY(-1px);
-    }
-
-    .nav-brand {
-      font-weight: 600;
-      opacity: 0.9;
-    }
-
-    /* Center hero section */
-    .hero {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding-inline: 8px;
-    }
-
-    .hero-text {
-      max-width: 520px;
-    }
-
-    .label {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      opacity: 0.65;
-      margin-bottom: 1rem;
-    }
-
-    .hero-title {
-      font-size: clamp(2.7rem, 5vw, 3.6rem);
-      line-height: 1.05;
-      font-weight: 700;
-      margin-bottom: 1.25rem;
-    }
-
-    .hero-subtitle {
-      font-size: 1.1rem;
-      line-height: 1.5;
-      opacity: 0.8;
-      max-width: 30rem;
-    }
-
-    .hero-meta {
-      margin-top: 1.75rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      font-size: 0.85rem;
-      opacity: 0.75;
-    }
-
-    .hero-meta div {
-      display: flex;
-      flex-direction: column;
-      gap: 0.25rem;
-    }
-
-    .hero-meta span.label-small {
-      font-size: 0.7rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      opacity: 0.6;
-    }
-
-    /* Right side “binary / badge” block to echo his vibe */
-    .hero-aside {
-      text-align: right;
-      font-family: "Space Grotesk", monospace;
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      opacity: 0.65;
-      pointer-events: none;
-      user-select: none;
-    }
-
-    .hero-aside .badge {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.3rem 0.7rem;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      margin-bottom: 0.75rem;
-      backdrop-filter: blur(6px);
-      background: rgba(5, 6, 8, 0.5);
-      font-size: 0.65rem;
-      letter-spacing: 0.16em;
-    }
-
-    .hero-aside .binary {
-      font-size: 0.7rem;
-      line-height: 1.4;
-      opacity: 0.45;
-    }
-
-    .hero-aside .since {
-      margin-top: 1.25rem;
-      font-size: 0.8rem;
-      opacity: 0.75;
-    }
-
-    /* Bottom bar */
-    .footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 0.8rem;
-      opacity: 0.7;
-    }
-
-    .footer-left {
-      display: flex;
-      flex-direction: column;
-      gap: 0.1rem;
-    }
-
-    .footer-right {
-      display: flex;
-      gap: 1rem;
-    }
-
-    .footer a {
-      color: inherit;
-      text-decoration: none;
-      opacity: 0.7;
-      transition: opacity 0.2s ease;
-    }
-
-    .footer a:hover {
-      opacity: 1;
-    }
-
-    /* Subtle parallax on hero text */
-    .hero-parallax {
-      transition: transform 0.1s linear;
-      will-change: transform;
-    }
-
-    @media (max-width: 800px) {
-      .hero {
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: center;
-      }
-
-      .hero-aside {
-        align-self: flex-end;
-        margin-top: 2rem;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .page {
-        padding: 16px 18px;
-      }
-
-      .nav {
-        font-size: 0.8rem;
-      }
-
-      .footer {
-        font-size: 0.7rem;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.4rem;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <!-- MATRIX BACKGROUND -->
@@ -288,6 +27,7 @@
       <nav class="nav-right">
         <a href="#about">About</a>
         <a href="#work">Work</a>
+        <a href="#publications">Publications</a>
         <a href="#contact">Contact</a>
       </nav>
     </header>
@@ -297,7 +37,7 @@
       <section class="hero-text hero-parallax">
         <div class="label">Creative Developer</div>
         <h1 class="hero-title">
-          Contributing to next <span style="white-space:nowrap;">genAI.</span>
+          Contributing to next <span style="white-space:nowrap;">GenAI.</span>
         </h1>
         <p class="hero-subtitle">
           Computer Science @JHU | Applied Math @UCSB | Focus on NLP & LLM | Software Development.
@@ -306,15 +46,15 @@
         <div class="hero-meta">
           <div>
             <span class="label-small">Based in</span>
-            <span>Somewhere on Earth 🌍</span>
+            <span>Baltimore, MD 🌍</span>
           </div>
           <div>
             <span class="label-small">Available for</span>
-            <span>Freelance & collaborations</span>
+            <span>Internships & fulltime & collaborations</span>
           </div>
           <div>
             <span class="label-small">Focus</span>
-            <span>Creative dev, Full stack, genAI</span>
+            <span>NLP, LLM, GenAI, Full Stack</span>
           </div>
         </div>
       </section>
@@ -322,22 +62,24 @@
       <aside class="hero-aside hero-parallax">
         <div class="badge">PORTFOLIO · 2025</div>
         <div class="binary">
-          1 0 0 0 1 0 0 1 1 0 1 1 1 1 1 0<br />
-          1 0 1 0 0 1 1 0 1 0 0 0 1 1 0 1<br />
-          0 0 1 1 1 0 1 1 1 0 1 1 0 0 1
+          1 0 0 1 0 0 1 1 0 1 1 1 1 1 0<br />
+          1 0 1 0 0 1 1 0 1 0 0 0  1 0 1<br />
+          0 0 1 1 1 0 1 1 1 1 1 0 0 1 0<br />
+          1 0 1 0 0 1 1 0 1 0 0 0 0 0 1<br />
+          1 0 1 0 0 1 1 0 1 0 0 0 1 0 1
         </div>
         <div class="since">
-          Coding my way<br />
-          since 2019
+          Coding since 2019<br />
+          
         </div>
       </aside>
     </main>
 
     <!-- BOTTOM BAR -->
     <footer class="footer">
+        
       <div class="footer-left">
-        <span>Currently exploring creative coding & interactive narratives.</span>
-        <span>Built with HTML, CSS, and vanilla JavaScript on GitHub Pages.</span>
+        <span>Built with HTML, CSS, and vanilla JS on GitHub Pages.</span>
       </div>
       <div class="footer-right">
         <a href="mailto:taoruijie666 at gmail dot com" id="contact">Email</a>
@@ -346,6 +88,249 @@
       </div>
     </footer>
   </div>
+
+  <!-- SCROLLABLE CONTENT SECTION -->
+  <section class="scroll-section">
+    <div class="text-window">
+      <h2>About</h2>
+      <p>
+        I'm a creative developer passionate about pushing the boundaries of technology and design. 
+        My work spans across computer science, applied mathematics, and the exciting realm of 
+        next-generation AI systems.
+      </p>
+      <p>
+        With a focus on NLP and Large Language Models, I explore the intersection of creativity 
+        and computation, building software that bridges the gap between human intuition and 
+        machine intelligence.
+      </p>
+      <p>
+        Currently pursuing Computer Science at JHU and Applied Math at UCSB, I'm constantly 
+        learning and contributing to the future of AI-driven solutions.
+      </p>
+    </div>
+  </section>
+
+  <!-- THIRD PAGE SECTION -->
+  <section class="page-section">
+    <div class="page-content-layout">
+      <!-- Left side: Icon/Graph -->
+      <div class="icon-container">
+        <img src="empty_recent_v3.webp" alt="Document history icon" class="graph-icon" />
+      </div>
+
+      <!-- Right side: 3 text blocks with connecting lines -->
+      <div class="text-blocks-container">
+        <div class="text-block-item">
+          <div class="text-block">
+            <h3>Document History</h3>
+            <p>Track and manage versions with comprehensive timeline features.</p>
+          </div>
+        </div>
+        <div class="connector-line"></div>
+        <div class="text-block-item">
+          <div class="text-block">
+            <h3>Version Control</h3>
+            <p>Efficient system for managing document revisions and changes.</p>
+          </div>
+        </div>
+        <div class="connector-line"></div>
+        <div class="text-block-item">
+          <div class="text-block">
+            <h3>Time Tracking</h3>
+            <p>Monitor document lifecycle and modification history over time.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOURTH PAGE SECTION - Heart Echo Project -->
+  <section class="page-section">
+    <div class="page-content-layout">
+      <!-- Left side: Text block with title, motivation, and intro -->
+      <div class="project-text-container">
+        <div class="project-text-block">
+          <h2>Heart Echo</h2>
+          <h3>AI-Powered Anonymous Mental Health Companion</h3>
+          
+          <div class="project-section">
+            <h4>Introduction</h4>
+            <p>
+              Mental health is a critical global issue affecting millions. With over 280 million people worldwide 
+              suffering from depression and limited access to mental health resources, there's an urgent need for 
+              accessible, anonymous support. 
+            </p>
+            <p>
+                Heart Echo is an innovative AI-powered mental health companion that leverages natural language processing 
+                to provide anonymous emotional support. Built with modern web technologies including React.js for the 
+                frontend and Flask for backend services, the platform ensures secure, scalable, and empathetic 
+                interactions. 
+            </p>
+          </div>
+
+          <div class="project-links">
+            <a href="https://github.com/JackTao888/H4H2025-HeartEcho" target="_blank" rel="noreferrer" class="project-link">
+              View on GitHub →
+            </a>
+          </div>
+        </div>
+
+        <!-- Tech Stack as independent text block -->
+        <div class="project-text-block tech-stack-block">
+          <h4>Tech Stack</h4>
+          <div class="tech-stack-grid">
+            <div class="tech-item">
+              <span class="tech-category">Frontend:</span>
+              <span class="tech-tools">React.js, JavaScript, HTML5, CSS3, Material-UI</span>
+            </div>
+            <div class="tech-item">
+              <span class="tech-category">Backend:</span>
+              <span class="tech-tools">Flask, Python, RESTful API, JWT Authentication</span>
+            </div>
+            <div class="tech-item">
+              <span class="tech-category">Database:</span>
+              <span class="tech-tools">PostgreSQL, SQLAlchemy ORM, Redis (Caching)</span>
+            </div>
+            <div class="tech-item">
+              <span class="tech-category">Security:</span>
+              <span class="tech-tools">HTTPS, Data Encryption, Anonymous User Sessions</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right side: Project structure diagram -->
+      <div class="project-diagram-container">
+        <div class="project-diagram">
+          <svg width="100%" height="100%" viewBox="0 0 1000 800" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#D4AF37;stop-opacity:0.8" />
+                <stop offset="100%" style="stop-color:#C9A961;stop-opacity:0.8" />
+              </linearGradient>
+              <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#808080;stop-opacity:0.8" />
+                <stop offset="100%" style="stop-color:#A0A0A0;stop-opacity:0.8" />
+              </linearGradient>
+              <filter id="glow">
+                <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                <feMerge>
+                  <feMergeNode in="coloredBlur"/>
+                  <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+              </filter>
+              <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="5" refY="3" orient="auto">
+                <polygon points="0 0, 10 3, 0 6" fill="rgba(255,255,255,0.6)" />
+              </marker>
+            </defs>
+
+            <!-- User Interface Layer -->
+            <rect x="325" y="20" width="350" height="100" rx="12" fill="url(#grad1)" filter="url(#glow)" opacity="0.9"/>
+            <text x="500" y="50" text-anchor="middle" fill="#f5f5f5" font-size="18" font-weight="700">User Interface</text>
+            <text x="500" y="75" text-anchor="middle" fill="#f5f5f5" font-size="13" opacity="0.9">React.js Frontend</text>
+            <text x="500" y="95" text-anchor="middle" fill="#f5f5f5" font-size="11" opacity="0.8">Material-UI Components</text>
+            <text x="500" y="112" text-anchor="middle" fill="#f5f5f5" font-size="11" opacity="0.8">Responsive Design</text>
+
+            <!-- Authentication Service -->
+            <rect x="50" y="140" width="200" height="90" rx="12" fill="url(#grad2)" filter="url(#glow)" opacity="0.9"/>
+            <text x="150" y="165" text-anchor="middle" fill="#f5f5f5" font-size="14" font-weight="700">Authentication</text>
+            <text x="150" y="185" text-anchor="middle" fill="#f5f5f5" font-size="12" opacity="0.9">JWT Tokens</text>
+            <text x="150" y="202" text-anchor="middle" fill="#f5f5f5" font-size="11" opacity="0.8">Anonymous Sessions</text>
+            <text x="150" y="218" text-anchor="middle" fill="#f5f5f5" font-size="11" opacity="0.8">Secure Login</text>
+
+            <!-- Arrow from UI to Auth -->
+            <path d="M 400 70 L 250 185" stroke="rgba(255,255,255,0.4)" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+            <!-- Backend Services -->
+            <rect x="300" y="140" width="300" height="90" rx="12" fill="url(#grad1)" filter="url(#glow)" opacity="0.9"/>
+            <text x="450" y="165" text-anchor="middle" fill="#f5f5f5" font-size="18" font-weight="700">Backend Services</text>
+            <text x="450" y="185" text-anchor="middle" fill="#f5f5f5" font-size="13" opacity="0.9">Flask RESTful API</text>
+            <text x="450" y="202" text-anchor="middle" fill="#f5f5f5" font-size="11" opacity="0.8">Request Routing &amp; Processing</text>
+            <text x="450" y="218" text-anchor="middle" fill="#f5f5f5" font-size="11" opacity="0.8">Business Logic Layer</text>
+
+            <!-- Caching Layer -->
+            <rect x="650" y="140" width="200" height="90" rx="12" fill="url(#grad2)" filter="url(#glow)" opacity="0.9"/>
+            <text x="750" y="165" text-anchor="middle" fill="#f5f5f5" font-size="14" font-weight="700">Cache Layer</text>
+            <text x="750" y="185" text-anchor="middle" fill="#f5f5f5" font-size="12" opacity="0.9">Redis</text>
+            <text x="750" y="202" text-anchor="middle" fill="#f5f5f5" font-size="11" opacity="0.8">Session Storage</text>
+            <text x="750" y="218" text-anchor="middle" fill="#f5f5f5" font-size="11" opacity="0.8">Performance Boost</text>
+
+            <!-- Arrows from UI to Backend -->
+            <path d="M 500 120 L 450 140" stroke="rgba(255,255,255,0.4)" stroke-width="2" marker-end="url(#arrowhead)"/>
+            <path d="M 600 70 L 750 185" stroke="rgba(255,255,255,0.4)" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+            <!-- Database -->
+            <rect x="50" y="260" width="220" height="110" rx="12" fill="url(#grad2)" filter="url(#glow)" opacity="0.9"/>
+            <text x="160" y="285" text-anchor="middle" fill="#f5f5f5" font-size="16" font-weight="700">Database</text>
+            <text x="160" y="305" text-anchor="middle" fill="#f5f5f5" font-size="13" opacity="0.9">PostgreSQL</text>
+            <text x="160" y="322" text-anchor="middle" fill="#f5f5f5" font-size="11" opacity="0.8">User Data Storage</text>
+            <text x="160" y="338" text-anchor="middle" fill="#f5f5f5" font-size="11" opacity="0.8">Conversation History</text>
+            <text x="160" y="354" text-anchor="middle" fill="#f5f5f5" font-size="11" opacity="0.8">SQLAlchemy ORM</text>
+
+            <!-- AI Model -->
+            <rect x="350" y="260" width="250" height="110" rx="12" fill="url(#grad1)" filter="url(#glow)" opacity="0.9"/>
+            <text x="475" y="285" text-anchor="middle" fill="#f5f5f5" font-size="16" font-weight="700">AI Model</text>
+            <text x="475" y="305" text-anchor="middle" fill="#f5f5f5" font-size="13" opacity="0.9">NLP Engine</text>
+            <text x="475" y="322" text-anchor="middle" fill="#f5f5f5" font-size="11" opacity="0.8">Transformers Model</text>
+            <text x="475" y="338" text-anchor="middle" fill="#f5f5f5" font-size="11" opacity="0.8">OpenAI API Integration</text>
+            <text x="475" y="354" text-anchor="middle" fill="#f5f5f5" font-size="11" opacity="0.8">Empathetic Responses</text>
+
+            <!-- Security Layer -->
+            <rect x="650" y="260" width="220" height="110" rx="12" fill="url(#grad2)" filter="url(#glow)" opacity="0.9"/>
+            <text x="760" y="285" text-anchor="middle" fill="#f5f5f5" font-size="16" font-weight="700">Security</text>
+            <text x="760" y="305" text-anchor="middle" fill="#f5f5f5" font-size="13" opacity="0.9">HTTPS/SSL</text>
+            <text x="760" y="322" text-anchor="middle" fill="#f5f5f5" font-size="11" opacity="0.8">Data Encryption</text>
+            <text x="760" y="338" text-anchor="middle" fill="#f5f5f5" font-size="11" opacity="0.8">Privacy Protection</text>
+            <text x="760" y="354" text-anchor="middle" fill="#f5f5f5" font-size="11" opacity="0.8">Anonymous Sessions</text>
+
+            <!-- Arrows from Backend to Database, AI, and Security -->
+            <path d="M 350 185 L 160 260" stroke="rgba(255,255,255,0.4)" stroke-width="2" marker-end="url(#arrowhead)"/>
+            <path d="M 450 230 L 475 260" stroke="rgba(255,255,255,0.4)" stroke-width="2" marker-end="url(#arrowhead)"/>
+            <path d="M 550 185 L 760 260" stroke="rgba(255,255,255,0.4)" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+            <!-- Monitoring & Logging -->
+            <rect x="50" y="400" width="220" height="90" rx="12" fill="url(#grad2)" filter="url(#glow)" opacity="0.9"/>
+            <text x="160" y="425" text-anchor="middle" fill="#f5f5f5" font-size="14" font-weight="700">Monitoring</text>
+            <text x="160" y="445" text-anchor="middle" fill="#f5f5f5" font-size="12" opacity="0.9">Logging System</text>
+            <text x="160" y="462" text-anchor="middle" fill="#f5f5f5" font-size="11" opacity="0.8">Error Tracking</text>
+            <text x="160" y="478" text-anchor="middle" fill="#f5f5f5" font-size="11" opacity="0.8">Performance Metrics</text>
+
+            <!-- Deployment -->
+            <rect x="350" y="400" width="250" height="90" rx="12" fill="url(#grad1)" filter="url(#glow)" opacity="0.9"/>
+            <text x="475" y="425" text-anchor="middle" fill="#f5f5f5" font-size="16" font-weight="700">Deployment</text>
+            <text x="475" y="445" text-anchor="middle" fill="#f5f5f5" font-size="13" opacity="0.9">Cloud Platform</text>
+            <text x="475" y="462" text-anchor="middle" fill="#f5f5f5" font-size="11" opacity="0.8">Docker Containers</text>
+            <text x="475" y="478" text-anchor="middle" fill="#f5f5f5" font-size="11" opacity="0.8">CI/CD Pipeline</text>
+
+            <!-- DevOps -->
+            <rect x="650" y="400" width="220" height="90" rx="12" fill="url(#grad2)" filter="url(#glow)" opacity="0.9"/>
+            <text x="760" y="425" text-anchor="middle" fill="#f5f5f5" font-size="14" font-weight="700">DevOps</text>
+            <text x="760" y="445" text-anchor="middle" fill="#f5f5f5" font-size="12" opacity="0.9">Git Version Control</text>
+            <text x="760" y="462" text-anchor="middle" fill="#f5f5f5" font-size="11" opacity="0.8">Automated Testing</text>
+            <text x="760" y="478" text-anchor="middle" fill="#f5f5f5" font-size="11" opacity="0.8">Scalable Infrastructure</text>
+
+            <!-- Arrows from Backend to Monitoring, Deployment, and DevOps -->
+            <path d="M 350 230 L 160 400" stroke="rgba(255,255,255,0.4)" stroke-width="2" marker-end="url(#arrowhead)"/>
+            <path d="M 450 230 L 475 400" stroke="rgba(255,255,255,0.4)" stroke-width="2" marker-end="url(#arrowhead)"/>
+            <path d="M 550 230 L 760 400" stroke="rgba(255,255,255,0.4)" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+            <!-- External Services -->
+            <rect x="300" y="520" width="400" height="90" rx="12" fill="url(#grad1)" filter="url(#glow)" opacity="0.9"/>
+            <text x="500" y="545" text-anchor="middle" fill="#f5f5f5" font-size="16" font-weight="700">External Services</text>
+            <text x="500" y="565" text-anchor="middle" fill="#f5f5f5" font-size="13" opacity="0.9">OpenAI API</text>
+            <text x="500" y="582" text-anchor="middle" fill="#f5f5f5" font-size="11" opacity="0.8">Third-party Integrations</text>
+            <text x="500" y="598" text-anchor="middle" fill="#f5f5f5" font-size="11" opacity="0.8">Cloud Storage Services</text>
+
+            <!-- Arrow from Deployment to External Services -->
+            <path d="M 475 490 L 500 520" stroke="rgba(255,255,255,0.4)" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+            <!-- User Flow Indicator -->
+            <text x="500" y="650" text-anchor="middle" fill="#f5f5f5" font-size="12" opacity="0.7" font-style="italic">User Request Flow → Processing → Response</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <script>
     // ============================
@@ -575,6 +560,12 @@
     const parallaxEls = document.querySelectorAll('.hero-parallax');
 
     window.addEventListener('pointermove', (e) => {
+      // Don't apply parallax if first page is fading out
+      const firstPage = document.querySelector('.page');
+      if (firstPage && firstPage.classList.contains('fade-out')) {
+        return;
+      }
+
       const cx = window.innerWidth / 2;
       const cy = window.innerHeight / 2;
       const dx = (e.clientX - cx) / cx;  // -1 → 1
@@ -589,6 +580,61 @@
         el.style.transform = `translate3d(${tx}px, ${ty}px, 0)`;
       });
     });
+
+    // ============================
+    // Smooth page transition animations
+    // ============================
+    /*
+      Fade-out from center animation for page transitions
+      Works for all pages - detects scroll and triggers animations
+    */
+
+    const firstPage = document.querySelector('.page');
+    
+    // Threshold for triggering fade (percentage of viewport height scrolled)
+    const fadeThreshold = 0.3; // 30% of viewport height
+
+    function handleScrollAnimations() {
+      const scrollY = window.scrollY || window.pageYOffset;
+      const viewportHeight = window.innerHeight;
+      const threshold = viewportHeight * fadeThreshold;
+
+      // Fade out first page when scrolling past threshold
+      if (firstPage) {
+        if (scrollY > threshold) {
+          firstPage.classList.add('fade-out');
+        } else {
+          firstPage.classList.remove('fade-out');
+        }
+      }
+
+      // Fade in all scrollable sections (works for .scroll-section and .page-section)
+      const allSections = document.querySelectorAll('.scroll-section, .page-section');
+      allSections.forEach((section) => {
+        const rect = section.getBoundingClientRect();
+        const sectionTop = rect.top;
+        const sectionVisible = sectionTop < viewportHeight * 0.7;
+
+        if (sectionVisible) {
+          section.classList.add('fade-in');
+        } else if (scrollY < viewportHeight) {
+          // Only remove fade-in if we're back near the top
+          section.classList.remove('fade-in');
+        }
+      });
+    }
+
+    // Initial check
+    handleScrollAnimations();
+
+    // Throttled scroll handler for performance
+    let scrollTimeout;
+    window.addEventListener('scroll', () => {
+      if (scrollTimeout) {
+        cancelAnimationFrame(scrollTimeout);
+      }
+      scrollTimeout = requestAnimationFrame(handleScrollAnimations);
+    }, { passive: true });
   </script>
 </body>
 </html>
