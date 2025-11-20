@@ -111,14 +111,14 @@
   </section>
 
   <!-- THIRD PAGE SECTION -->
-  <section class="page-section">
+  <section class="page-section" id="work">
     <div class="page-content-layout">
       <!-- Left side: Icon/Graph -->
       <div class="icon-container">
         <img src="empty_recent_v3.webp" alt="Document history icon" class="graph-icon" />
       </div>
 
-      <!-- Right side: 3 text blocks with connecting lines -->
+      <!-- Right side: 3 text blocks with improved timeline layout -->
       <div class="text-blocks-container">
         <div class="text-block-item">
           <div class="text-block">
@@ -126,14 +126,12 @@
             <p>Track and manage versions with comprehensive timeline features.</p>
           </div>
         </div>
-        <div class="connector-line"></div>
         <div class="text-block-item">
           <div class="text-block">
             <h3>Version Control</h3>
             <p>Efficient system for managing document revisions and changes.</p>
           </div>
         </div>
-        <div class="connector-line"></div>
         <div class="text-block-item">
           <div class="text-block">
             <h3>Time Tracking</h3>
@@ -145,190 +143,260 @@
   </section>
 
   <!-- FOURTH PAGE SECTION - Heart Echo Project -->
-  <section class="page-section">
-    <div class="page-content-layout">
-      <!-- Left side: Text block with title, motivation, and intro -->
-      <div class="project-text-container">
-        <div class="project-text-block">
+  <section class="page-section" id="project">
+    <div class="project-page-container">
+      
+      <!-- Project Header -->
+      <div class="project-header-full">
           <h2>Heart Echo</h2>
           <h3>AI-Powered Anonymous Mental Health Companion</h3>
-          
-          <div class="project-section">
-            <h4>Introduction</h4>
-            <p>
-              Mental health is a critical global issue affecting millions. With over 280 million people worldwide 
-              suffering from depression and limited access to mental health resources, there's an urgent need for 
-              accessible, anonymous support. 
-            </p>
-            <p>
-                Heart Echo is an innovative AI-powered mental health companion that leverages natural language processing 
-                to provide anonymous emotional support. Built with modern web technologies including React.js for the 
-                frontend and Flask for backend services, the platform ensures secure, scalable, and empathetic 
-                interactions. 
-            </p>
-          </div>
+      </div>
 
-          <div class="project-links">
-            <a href="https://github.com/JackTao888/H4H2025-HeartEcho" target="_blank" rel="noreferrer" class="project-link">
-              View on GitHub →
+      <div class="project-content-split">
+        <!-- Left Side: Info & Tech & Contributors -->
+        <div class="project-info-side">
+          
+            <div class="glass-card project-intro">
+            <p>
+                  Mental health is a critical global issue affecting millions. <strong>Heart Echo</strong> is an innovative AI-powered 
+                  companion leveraging natural language processing to provide anonymous, accessible emotional support.
+            </p>
+            <p>
+                  Built with modern web technologies, the platform ensures secure, scalable, and empathetic interactions 
+                  bridging the gap between human needs and machine intelligence.
+                </p>
+                
+                <div class="project-links-row">
+                   <a href="https://github.com/JackTao888/H4H2025-HeartEcho" target="_blank" rel="noreferrer" class="project-btn">
+                     <span>View on GitHub</span>
+                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
             </a>
           </div>
         </div>
 
-        <!-- Tech Stack as independent text block -->
-        <div class="project-text-block tech-stack-block">
-          <h4>Tech Stack</h4>
-          <div class="tech-stack-grid">
-            <div class="tech-item">
-              <span class="tech-category">Frontend:</span>
-              <span class="tech-tools">React.js, JavaScript, HTML5, CSS3, Material-UI</span>
+            <div class="tech-stack-compact">
+                 <div class="tech-pill">
+                    <span class="tech-cat">Frontend</span>
+                    <span class="tech-val">Next.js • Tailwind</span>
+                 </div>
+                 <div class="tech-pill">
+                    <span class="tech-cat">Backend</span>
+                    <span class="tech-val">Flask • Python</span>
+                 </div>
+                 <div class="tech-pill">
+                    <span class="tech-cat">Data</span>
+                    <span class="tech-val">MySQL • REST API</span>
+                 </div>
+                 <div class="tech-pill">
+                    <span class="tech-cat">AI Engine</span>
+                    <span class="tech-val">OpenAI • Prompt Eng</span>
+                 </div>
             </div>
-            <div class="tech-item">
-              <span class="tech-category">Backend:</span>
-              <span class="tech-tools">Flask, Python, RESTful API, JWT Authentication</span>
+
+            <!-- Contributors (Moved Here) -->
+            <div class="contributors-compact">
+              <h4>Contributors</h4>
+              <div class="contributors-row">
+                 <div class="contributor-chip">
+                    <div class="avatar" style="background: #6D28D9;">RT</div>
+                    <div class="meta">
+                      <span class="name">Ruijie Tao</span>
+                      <span class="role">Lead Dev</span>
+                    </div>
+                 </div>
+                 <div class="contributor-chip">
+                    <div class="avatar" style="background: #BE185D;">XX</div>
+                    <div class="meta">
+                      <span class="name">xxx</span>
+                      <span class="role">Frontend</span>
             </div>
-            <div class="tech-item">
-              <span class="tech-category">Database:</span>
-              <span class="tech-tools">PostgreSQL, SQLAlchemy ORM, Redis (Caching)</span>
             </div>
-            <div class="tech-item">
-              <span class="tech-category">Security:</span>
-              <span class="tech-tools">HTTPS, Data Encryption, Anonymous User Sessions</span>
+                 <div class="contributor-chip">
+                    <div class="avatar" style="background: #0891B2;">XX</div>
+                    <div class="meta">
+                      <span class="name">xxx</span>
+                      <span class="role">Backend</span>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Right side: Project structure diagram -->
-      <div class="project-diagram-container">
-        <div class="project-diagram">
-          <svg width="100%" height="100%" viewBox="0 0 1000 800" xmlns="http://www.w3.org/2000/svg">
+        </div>
+
+        <!-- Right Side: Diagram -->
+        <div class="project-visual-side">
+          <div class="diagram-glass-container">
+            <svg width="100%" height="100%" viewBox="0 0 900 650" xmlns="http://www.w3.org/2000/svg" class="animated-graph">
             <defs>
-              <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" style="stop-color:#D4AF37;stop-opacity:0.8" />
-                <stop offset="100%" style="stop-color:#C9A961;stop-opacity:0.8" />
+                <linearGradient id="gradBox" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:rgba(255,255,255,0.1)" />
+                  <stop offset="100%" style="stop-color:rgba(255,255,255,0.05)" />
               </linearGradient>
-              <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" style="stop-color:#808080;stop-opacity:0.8" />
-                <stop offset="100%" style="stop-color:#A0A0A0;stop-opacity:0.8" />
+                <linearGradient id="gradStroke" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" style="stop-color:#6D28D9" />
+                  <stop offset="100%" style="stop-color:#0891B2" />
               </linearGradient>
-              <filter id="glow">
-                <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-                <feMerge>
-                  <feMergeNode in="coloredBlur"/>
-                  <feMergeNode in="SourceGraphic"/>
-                </feMerge>
+                <filter id="glowFancy" x="-50%" y="-50%" width="200%" height="200%">
+                  <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+                  <feComposite in="coloredBlur" in2="SourceGraphic" operator="over"/>
               </filter>
-              <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="5" refY="3" orient="auto">
-                <polygon points="0 0, 10 3, 0 6" fill="rgba(255,255,255,0.6)" />
-              </marker>
+                
+                <!-- Animations -->
+                <style>
+                  .flow-line { 
+                    stroke-dasharray: 10; 
+                    animation: flow 2s linear infinite; 
+                    opacity: 0.6;
+                  }
+                  .box-hover { transition: all 0.3s ease; cursor: pointer; }
+                  .box-hover:hover rect { stroke: white; stroke-width: 2; stroke-opacity: 0.8; }
+                  .box-hover:hover text { fill: white; }
+                  
+                  @keyframes flow {
+                    to { stroke-dashoffset: -20; }
+                  }
+                  
+                  .pulse-circle { animation: pulse 3s infinite; }
+                  @keyframes pulse {
+                    0% { opacity: 0.3; r: 5; }
+                    50% { opacity: 0.8; r: 7; }
+                    100% { opacity: 0.3; r: 5; }
+                  }
+                </style>
             </defs>
 
-            <!-- User Interface Layer -->
-            <rect x="325" y="20" width="350" height="100" rx="12" fill="url(#grad1)" filter="url(#glow)" opacity="0.9"/>
-            <text x="500" y="50" text-anchor="middle" fill="#f5f5f5" font-size="18" font-weight="700">User Interface</text>
-            <text x="500" y="75" text-anchor="middle" fill="#f5f5f5" font-size="13" opacity="0.9">React.js Frontend</text>
-            <text x="500" y="95" text-anchor="middle" fill="#f5f5f5" font-size="11" opacity="0.8">Material-UI Components</text>
-            <text x="500" y="112" text-anchor="middle" fill="#f5f5f5" font-size="11" opacity="0.8">Responsive Design</text>
+              <!-- CONNECTORS -->
+              <g stroke="url(#gradStroke)" stroke-width="2" fill="none">
+                <!-- Functionality Blocks -> Frontend -->
+                <!-- Posts (x=150+50=200), Frontend top (y=160) -->
+                <path d="M 200 140 L 200 155" class="flow-line" style="animation-delay: 0s" />
+                <!-- Comments (x=280+50=330), Frontend top (y=160) -->
+                <path d="M 330 140 L 330 155" class="flow-line" style="animation-delay: 0.2s" />
+                <!-- Likes (x=410+50=460), Frontend top (y=160) -->
+                <path d="M 460 140 L 460 155" class="flow-line" style="animation-delay: 0.4s" />
+                <!-- Info Flow (x=540+50=590), Frontend top (y=160) -->
+                <path d="M 590 140 L 590 155" class="flow-line" style="animation-delay: 0.6s" />
+                
+                <!-- Frontend -> Backend -->
+                <!-- Frontend bottom (y=240), Backend top (y=300) -->
+                <path d="M 400 235 L 400 295" class="flow-line" />
+                
+                <!-- Backend -> Recommendation Algorithm -->
+                <!-- Backend right (x=520), Recommendation left (x=620), both at y=350 (middle of Backend) -->
+                <path d="M 520 350 L 615 350" class="flow-line" style="animation-delay: 0.5s" />
+                
+                <!-- Backend -> DB -->
+                <!-- Backend bottom (y=400), DB top (y=500) -->
+                <path d="M 400 395 L 400 440 L 250 440 L 250 495" class="flow-line" style="animation-delay: 0.5s" />
+                
+                <!-- Backend -> AI -->
+                <!-- Backend bottom (y=400), AI top (y=500) -->
+                <path d="M 400 395 L 400 440 L 550 440 L 550 495" class="flow-line" style="animation-delay: 0.5s" />
+              </g>
 
-            <!-- Authentication Service -->
-            <rect x="50" y="140" width="200" height="90" rx="12" fill="url(#grad2)" filter="url(#glow)" opacity="0.9"/>
-            <text x="150" y="165" text-anchor="middle" fill="#f5f5f5" font-size="14" font-weight="700">Authentication</text>
-            <text x="150" y="185" text-anchor="middle" fill="#f5f5f5" font-size="12" opacity="0.9">JWT Tokens</text>
-            <text x="150" y="202" text-anchor="middle" fill="#f5f5f5" font-size="11" opacity="0.8">Anonymous Sessions</text>
-            <text x="150" y="218" text-anchor="middle" fill="#f5f5f5" font-size="11" opacity="0.8">Secure Login</text>
+              <!-- NODES -->
+              
+              <!-- Functionality Blocks Above Frontend -->
+              
+              <!-- Posts -->
+              <g class="box-hover" transform="translate(150, 10)">
+                <rect x="0" y="0" width="100" height="130" rx="10" fill="url(#gradBox)" stroke="rgba(255,255,255,0.2)" stroke-width="1" />
+                <text x="50" y="30" text-anchor="middle" fill="#fff" font-weight="bold" font-size="12" letter-spacing="0.5">POSTS</text>
+                <text x="50" y="50" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">Create</text>
+                <text x="50" y="70" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">View</text>
+                <text x="50" y="90" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">Edit</text>
+                <text x="50" y="110" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">Delete</text>
+                <circle cx="80" cy="20" r="3" fill="#BE185D" class="pulse-circle" />
+              </g>
 
-            <!-- Arrow from UI to Auth -->
-            <path d="M 400 70 L 250 185" stroke="rgba(255,255,255,0.4)" stroke-width="2" marker-end="url(#arrowhead)"/>
+              <!-- Comments -->
+              <g class="box-hover" transform="translate(280, 10)">
+                <rect x="0" y="0" width="100" height="130" rx="10" fill="url(#gradBox)" stroke="rgba(255,255,255,0.2)" stroke-width="1" />
+                <text x="50" y="30" text-anchor="middle" fill="#fff" font-weight="bold" font-size="12" letter-spacing="0.5">COMMENTS</text>
+                <text x="50" y="50" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">Add</text>
+                <text x="50" y="70" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">Reply</text>
+                <text x="50" y="90" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">Thread</text>
+                <text x="50" y="110" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">Moderate</text>
+                <circle cx="80" cy="20" r="3" fill="#0891B2" class="pulse-circle" />
+              </g>
 
-            <!-- Backend Services -->
-            <rect x="300" y="140" width="300" height="90" rx="12" fill="url(#grad1)" filter="url(#glow)" opacity="0.9"/>
-            <text x="450" y="165" text-anchor="middle" fill="#f5f5f5" font-size="18" font-weight="700">Backend Services</text>
-            <text x="450" y="185" text-anchor="middle" fill="#f5f5f5" font-size="13" opacity="0.9">Flask RESTful API</text>
-            <text x="450" y="202" text-anchor="middle" fill="#f5f5f5" font-size="11" opacity="0.8">Request Routing &amp; Processing</text>
-            <text x="450" y="218" text-anchor="middle" fill="#f5f5f5" font-size="11" opacity="0.8">Business Logic Layer</text>
+              <!-- Likes -->
+              <g class="box-hover" transform="translate(410, 10)">
+                <rect x="0" y="0" width="100" height="130" rx="10" fill="url(#gradBox)" stroke="rgba(255,255,255,0.2)" stroke-width="1" />
+                <text x="50" y="30" text-anchor="middle" fill="#fff" font-weight="bold" font-size="12" letter-spacing="0.5">LIKES</text>
+                <text x="50" y="50" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">Like</text>
+                <text x="50" y="70" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">Unlike</text>
+                <text x="50" y="90" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">Count</text>
+                <text x="50" y="110" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">Real-time</text>
+                <circle cx="80" cy="20" r="3" fill="#D97706" class="pulse-circle" />
+              </g>
 
-            <!-- Caching Layer -->
-            <rect x="650" y="140" width="200" height="90" rx="12" fill="url(#grad2)" filter="url(#glow)" opacity="0.9"/>
-            <text x="750" y="165" text-anchor="middle" fill="#f5f5f5" font-size="14" font-weight="700">Cache Layer</text>
-            <text x="750" y="185" text-anchor="middle" fill="#f5f5f5" font-size="12" opacity="0.9">Redis</text>
-            <text x="750" y="202" text-anchor="middle" fill="#f5f5f5" font-size="11" opacity="0.8">Session Storage</text>
-            <text x="750" y="218" text-anchor="middle" fill="#f5f5f5" font-size="11" opacity="0.8">Performance Boost</text>
+              <!-- Information Flow -->
+              <g class="box-hover" transform="translate(540, 10)">
+                <rect x="0" y="0" width="100" height="130" rx="10" fill="url(#gradBox)" stroke="rgba(255,255,255,0.2)" stroke-width="1" />
+                <text x="50" y="30" text-anchor="middle" fill="#fff" font-weight="bold" font-size="11" letter-spacing="0.5">INFO FLOW</text>
+                <text x="50" y="50" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">Feed</text>
+                <text x="50" y="70" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">Update</text>
+                <text x="50" y="90" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">Notify</text>
+                <text x="50" y="110" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">Sync</text>
+                <circle cx="80" cy="20" r="3" fill="#059669" class="pulse-circle" />
+              </g>
+              
+              <!-- 1. Frontend (Next.js) -->
+              <g class="box-hover" transform="translate(280, 160)">
+                <rect x="0" y="0" width="240" height="80" rx="12" fill="url(#gradBox)" stroke="rgba(255,255,255,0.2)" stroke-width="1" />
+                <text x="120" y="35" text-anchor="middle" fill="#fff" font-weight="bold" font-size="14" letter-spacing="1">FRONTEND</text>
+                <text x="120" y="55" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="11">Next.js • Tailwind • TS</text>
+                <!-- Decor -->
+                <circle cx="220" cy="40" r="4" fill="#BE185D" class="pulse-circle" />
+              </g>
 
-            <!-- Arrows from UI to Backend -->
-            <path d="M 500 120 L 450 140" stroke="rgba(255,255,255,0.4)" stroke-width="2" marker-end="url(#arrowhead)"/>
-            <path d="M 600 70 L 750 185" stroke="rgba(255,255,255,0.4)" stroke-width="2" marker-end="url(#arrowhead)"/>
+              <!-- 2. Backend (Flask) -->
+              <g class="box-hover" transform="translate(280, 300)">
+                 <!-- Label Tag -->
+                <rect x="0" y="0" width="240" height="100" rx="12" fill="url(#gradBox)" stroke="rgba(255,255,255,0.2)" stroke-width="1" />
+                <text x="120" y="45" text-anchor="middle" fill="#fff" font-weight="bold" font-size="14" letter-spacing="1">BACKEND API</text>
+                <text x="120" y="65" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="11">Python • Flask • REST</text>
+                <circle cx="20" cy="50" r="4" fill="#6D28D9" class="pulse-circle" />
+              </g>
 
-            <!-- Database -->
-            <rect x="50" y="260" width="220" height="110" rx="12" fill="url(#grad2)" filter="url(#glow)" opacity="0.9"/>
-            <text x="160" y="285" text-anchor="middle" fill="#f5f5f5" font-size="16" font-weight="700">Database</text>
-            <text x="160" y="305" text-anchor="middle" fill="#f5f5f5" font-size="13" opacity="0.9">PostgreSQL</text>
-            <text x="160" y="322" text-anchor="middle" fill="#f5f5f5" font-size="11" opacity="0.8">User Data Storage</text>
-            <text x="160" y="338" text-anchor="middle" fill="#f5f5f5" font-size="11" opacity="0.8">Conversation History</text>
-            <text x="160" y="354" text-anchor="middle" fill="#f5f5f5" font-size="11" opacity="0.8">SQLAlchemy ORM</text>
+              <!-- 2b. Recommendation Algorithm (Right of Backend) -->
+              <g class="box-hover" transform="translate(620, 300)">
+                <rect x="0" y="0" width="180" height="100" rx="12" fill="url(#gradBox)" stroke="rgba(255,255,255,0.2)" stroke-width="1" />
+                <text x="90" y="35" text-anchor="middle" fill="#fff" font-weight="bold" font-size="13" letter-spacing="0.5">RECOMMENDATION</text>
+                <text x="90" y="50" text-anchor="middle" fill="#fff" font-weight="bold" font-size="13" letter-spacing="0.5">ALGORITHM</text>
+                <text x="90" y="70" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="10">Content-Based</text>
+                <text x="90" y="85" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="10">ML Filtering</text>
+                <circle cx="160" cy="25" r="4" fill="#7C3AED" class="pulse-circle" />
+              </g>
 
-            <!-- AI Model -->
-            <rect x="350" y="260" width="250" height="110" rx="12" fill="url(#grad1)" filter="url(#glow)" opacity="0.9"/>
-            <text x="475" y="285" text-anchor="middle" fill="#f5f5f5" font-size="16" font-weight="700">AI Model</text>
-            <text x="475" y="305" text-anchor="middle" fill="#f5f5f5" font-size="13" opacity="0.9">NLP Engine</text>
-            <text x="475" y="322" text-anchor="middle" fill="#f5f5f5" font-size="11" opacity="0.8">Transformers Model</text>
-            <text x="475" y="338" text-anchor="middle" fill="#f5f5f5" font-size="11" opacity="0.8">OpenAI API Integration</text>
-            <text x="475" y="354" text-anchor="middle" fill="#f5f5f5" font-size="11" opacity="0.8">Empathetic Responses</text>
+              <!-- 3. Database (MySQL) -->
+              <g class="box-hover" transform="translate(150, 500)">
+                <rect x="0" y="0" width="200" height="80" rx="12" fill="url(#gradBox)" stroke="rgba(255,255,255,0.2)" stroke-width="1" />
+                <text x="100" y="35" text-anchor="middle" fill="#fff" font-weight="bold" font-size="13" letter-spacing="1">DATABASE</text>
+                <text x="100" y="55" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="11">MySQL</text>
+                <circle cx="180" cy="40" r="4" fill="#0891B2" class="pulse-circle" />
+              </g>
 
-            <!-- Security Layer -->
-            <rect x="650" y="260" width="220" height="110" rx="12" fill="url(#grad2)" filter="url(#glow)" opacity="0.9"/>
-            <text x="760" y="285" text-anchor="middle" fill="#f5f5f5" font-size="16" font-weight="700">Security</text>
-            <text x="760" y="305" text-anchor="middle" fill="#f5f5f5" font-size="13" opacity="0.9">HTTPS/SSL</text>
-            <text x="760" y="322" text-anchor="middle" fill="#f5f5f5" font-size="11" opacity="0.8">Data Encryption</text>
-            <text x="760" y="338" text-anchor="middle" fill="#f5f5f5" font-size="11" opacity="0.8">Privacy Protection</text>
-            <text x="760" y="354" text-anchor="middle" fill="#f5f5f5" font-size="11" opacity="0.8">Anonymous Sessions</text>
+              <!-- 4. AI Engine (OpenAI) -->
+              <g class="box-hover" transform="translate(450, 500)">
+                <rect x="0" y="0" width="200" height="80" rx="12" fill="url(#gradBox)" stroke="rgba(255,255,255,0.2)" stroke-width="1" />
+                <text x="100" y="35" text-anchor="middle" fill="#fff" font-weight="bold" font-size="13" letter-spacing="1">AI ENGINE</text>
+                <text x="100" y="55" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="11">OpenAI GPT-4</text>
+                <circle cx="20" cy="40" r="4" fill="#D97706" class="pulse-circle" />
+              </g>
 
-            <!-- Arrows from Backend to Database, AI, and Security -->
-            <path d="M 350 185 L 160 260" stroke="rgba(255,255,255,0.4)" stroke-width="2" marker-end="url(#arrowhead)"/>
-            <path d="M 450 230 L 475 260" stroke="rgba(255,255,255,0.4)" stroke-width="2" marker-end="url(#arrowhead)"/>
-            <path d="M 550 185 L 760 260" stroke="rgba(255,255,255,0.4)" stroke-width="2" marker-end="url(#arrowhead)"/>
+              <!-- User Flow Labels (Optional subtle indicators) -->
+              <text x="415" y="255" fill="rgba(255,255,255,0.4)" font-size="10" font-style="italic">JSON / HTTP</text>
+              <text x="560" y="285" fill="rgba(255,255,255,0.4)" font-size="10" font-style="italic">Algorithm</text>
+              <text x="300" y="480" fill="rgba(255,255,255,0.4)" font-size="10" font-style="italic">SQL Query</text>
+              <text x="480" y="480" fill="rgba(255,255,255,0.4)" font-size="10" font-style="italic">API Call</text>
 
-            <!-- Monitoring & Logging -->
-            <rect x="50" y="400" width="220" height="90" rx="12" fill="url(#grad2)" filter="url(#glow)" opacity="0.9"/>
-            <text x="160" y="425" text-anchor="middle" fill="#f5f5f5" font-size="14" font-weight="700">Monitoring</text>
-            <text x="160" y="445" text-anchor="middle" fill="#f5f5f5" font-size="12" opacity="0.9">Logging System</text>
-            <text x="160" y="462" text-anchor="middle" fill="#f5f5f5" font-size="11" opacity="0.8">Error Tracking</text>
-            <text x="160" y="478" text-anchor="middle" fill="#f5f5f5" font-size="11" opacity="0.8">Performance Metrics</text>
-
-            <!-- Deployment -->
-            <rect x="350" y="400" width="250" height="90" rx="12" fill="url(#grad1)" filter="url(#glow)" opacity="0.9"/>
-            <text x="475" y="425" text-anchor="middle" fill="#f5f5f5" font-size="16" font-weight="700">Deployment</text>
-            <text x="475" y="445" text-anchor="middle" fill="#f5f5f5" font-size="13" opacity="0.9">Cloud Platform</text>
-            <text x="475" y="462" text-anchor="middle" fill="#f5f5f5" font-size="11" opacity="0.8">Docker Containers</text>
-            <text x="475" y="478" text-anchor="middle" fill="#f5f5f5" font-size="11" opacity="0.8">CI/CD Pipeline</text>
-
-            <!-- DevOps -->
-            <rect x="650" y="400" width="220" height="90" rx="12" fill="url(#grad2)" filter="url(#glow)" opacity="0.9"/>
-            <text x="760" y="425" text-anchor="middle" fill="#f5f5f5" font-size="14" font-weight="700">DevOps</text>
-            <text x="760" y="445" text-anchor="middle" fill="#f5f5f5" font-size="12" opacity="0.9">Git Version Control</text>
-            <text x="760" y="462" text-anchor="middle" fill="#f5f5f5" font-size="11" opacity="0.8">Automated Testing</text>
-            <text x="760" y="478" text-anchor="middle" fill="#f5f5f5" font-size="11" opacity="0.8">Scalable Infrastructure</text>
-
-            <!-- Arrows from Backend to Monitoring, Deployment, and DevOps -->
-            <path d="M 350 230 L 160 400" stroke="rgba(255,255,255,0.4)" stroke-width="2" marker-end="url(#arrowhead)"/>
-            <path d="M 450 230 L 475 400" stroke="rgba(255,255,255,0.4)" stroke-width="2" marker-end="url(#arrowhead)"/>
-            <path d="M 550 230 L 760 400" stroke="rgba(255,255,255,0.4)" stroke-width="2" marker-end="url(#arrowhead)"/>
-
-            <!-- External Services -->
-            <rect x="300" y="520" width="400" height="90" rx="12" fill="url(#grad1)" filter="url(#glow)" opacity="0.9"/>
-            <text x="500" y="545" text-anchor="middle" fill="#f5f5f5" font-size="16" font-weight="700">External Services</text>
-            <text x="500" y="565" text-anchor="middle" fill="#f5f5f5" font-size="13" opacity="0.9">OpenAI API</text>
-            <text x="500" y="582" text-anchor="middle" fill="#f5f5f5" font-size="11" opacity="0.8">Third-party Integrations</text>
-            <text x="500" y="598" text-anchor="middle" fill="#f5f5f5" font-size="11" opacity="0.8">Cloud Storage Services</text>
-
-            <!-- Arrow from Deployment to External Services -->
-            <path d="M 475 490 L 500 520" stroke="rgba(255,255,255,0.4)" stroke-width="2" marker-end="url(#arrowhead)"/>
-
-            <!-- User Flow Indicator -->
-            <text x="500" y="650" text-anchor="middle" fill="#f5f5f5" font-size="12" opacity="0.7" font-style="italic">User Request Flow → Processing → Response</text>
           </svg>
+          </div>
         </div>
       </div>
+
     </div>
   </section>
 
