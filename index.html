@@ -90,7 +90,9 @@
   </div>
 
   <!-- SCROLLABLE CONTENT SECTION -->
-  <section class="scroll-section">
+  <section class="scroll-section" id="about">
+    <div class="about-content-layout">
+    <!--
     <div class="text-window">
       <h2>About</h2>
       <p>
@@ -107,6 +109,28 @@
         Currently pursuing Computer Science at JHU and Applied Math at UCSB, I'm constantly 
         learning and contributing to the future of AI-driven solutions.
       </p>
+      </div>
+      -->
+      
+      <!-- CV Display Section -->
+      <div class="cv-viewer-container">
+        <div class="cv-header">
+          <h3>Resume</h3>
+          <button class="cv-download-btn" onclick="downloadCV()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            Download PDF
+          </button>
+        </div>
+        
+        <div class="cv-content" id="cvDisplay">
+          <!-- CV content will be loaded here -->
+          <div class="cv-loading">Loading resume...</div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -178,15 +202,15 @@
                  <div class="tech-pill">
                     <span class="tech-cat">Frontend</span>
                     <span class="tech-val">Next.js • Tailwind</span>
-                 </div>
+            </div>
                  <div class="tech-pill">
                     <span class="tech-cat">Backend</span>
                     <span class="tech-val">Flask • Python</span>
-                 </div>
+            </div>
                  <div class="tech-pill">
                     <span class="tech-cat">Data</span>
                     <span class="tech-val">MySQL • REST API</span>
-                 </div>
+            </div>
                  <div class="tech-pill">
                     <span class="tech-cat">AI Engine</span>
                     <span class="tech-val">OpenAI • Prompt Eng</span>
@@ -229,8 +253,8 @@
             <svg width="100%" height="100%" viewBox="0 0 900 650" xmlns="http://www.w3.org/2000/svg" class="animated-graph">
             <defs>
                 <linearGradient id="gradBox" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" style="stop-color:rgba(255,255,255,0.1)" />
-                  <stop offset="100%" style="stop-color:rgba(255,255,255,0.05)" />
+                  <stop offset="0%" style="stop-color:rgba(40,40,50,0.85)" />
+                  <stop offset="100%" style="stop-color:rgba(30,30,40,0.75)" />
               </linearGradient>
                 <linearGradient id="gradStroke" x1="0%" y1="0%" x2="100%" y2="0%">
                   <stop offset="0%" style="stop-color:#6D28D9" />
@@ -300,7 +324,7 @@
               
               <!-- Posts -->
               <g class="box-hover" transform="translate(150, 10)">
-                <rect x="0" y="0" width="100" height="130" rx="10" fill="url(#gradBox)" stroke="rgba(255,255,255,0.2)" stroke-width="1" />
+                <rect x="0" y="0" width="100" height="130" rx="10" fill="url(#gradBox)" stroke="rgba(255,255,255,0.4)" stroke-width="1" />
                 <text x="50" y="30" text-anchor="middle" fill="#fff" font-weight="bold" font-size="12" letter-spacing="0.5">POSTS</text>
                 <text x="50" y="50" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">Create</text>
                 <text x="50" y="70" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">View</text>
@@ -311,7 +335,7 @@
 
               <!-- Comments -->
               <g class="box-hover" transform="translate(280, 10)">
-                <rect x="0" y="0" width="100" height="130" rx="10" fill="url(#gradBox)" stroke="rgba(255,255,255,0.2)" stroke-width="1" />
+                <rect x="0" y="0" width="100" height="130" rx="10" fill="url(#gradBox)" stroke="rgba(255,255,255,0.4)" stroke-width="1" />
                 <text x="50" y="30" text-anchor="middle" fill="#fff" font-weight="bold" font-size="12" letter-spacing="0.5">COMMENTS</text>
                 <text x="50" y="50" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">Add</text>
                 <text x="50" y="70" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">Reply</text>
@@ -322,7 +346,7 @@
 
               <!-- Likes -->
               <g class="box-hover" transform="translate(410, 10)">
-                <rect x="0" y="0" width="100" height="130" rx="10" fill="url(#gradBox)" stroke="rgba(255,255,255,0.2)" stroke-width="1" />
+                <rect x="0" y="0" width="100" height="130" rx="10" fill="url(#gradBox)" stroke="rgba(255,255,255,0.4)" stroke-width="1" />
                 <text x="50" y="30" text-anchor="middle" fill="#fff" font-weight="bold" font-size="12" letter-spacing="0.5">LIKES</text>
                 <text x="50" y="50" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">Like</text>
                 <text x="50" y="70" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">Unlike</text>
@@ -333,7 +357,7 @@
 
               <!-- Information Flow -->
               <g class="box-hover" transform="translate(540, 10)">
-                <rect x="0" y="0" width="100" height="130" rx="10" fill="url(#gradBox)" stroke="rgba(255,255,255,0.2)" stroke-width="1" />
+                <rect x="0" y="0" width="100" height="130" rx="10" fill="url(#gradBox)" stroke="rgba(255,255,255,0.4)" stroke-width="1" />
                 <text x="50" y="30" text-anchor="middle" fill="#fff" font-weight="bold" font-size="11" letter-spacing="0.5">INFO FLOW</text>
                 <text x="50" y="50" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">Feed</text>
                 <text x="50" y="70" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">Update</text>
@@ -344,7 +368,7 @@
               
               <!-- 1. Frontend (Next.js) -->
               <g class="box-hover" transform="translate(280, 160)">
-                <rect x="0" y="0" width="240" height="80" rx="12" fill="url(#gradBox)" stroke="rgba(255,255,255,0.2)" stroke-width="1" />
+                <rect x="0" y="0" width="240" height="80" rx="12" fill="url(#gradBox)" stroke="rgba(255,255,255,0.4)" stroke-width="1" />
                 <text x="120" y="35" text-anchor="middle" fill="#fff" font-weight="bold" font-size="14" letter-spacing="1">FRONTEND</text>
                 <text x="120" y="55" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="11">Next.js • Tailwind • TS</text>
                 <!-- Decor -->
@@ -354,7 +378,7 @@
               <!-- 2. Backend (Flask) -->
               <g class="box-hover" transform="translate(280, 300)">
                  <!-- Label Tag -->
-                <rect x="0" y="0" width="240" height="100" rx="12" fill="url(#gradBox)" stroke="rgba(255,255,255,0.2)" stroke-width="1" />
+                <rect x="0" y="0" width="240" height="100" rx="12" fill="url(#gradBox)" stroke="rgba(255,255,255,0.4)" stroke-width="1" />
                 <text x="120" y="45" text-anchor="middle" fill="#fff" font-weight="bold" font-size="14" letter-spacing="1">BACKEND API</text>
                 <text x="120" y="65" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="11">Python • Flask • REST</text>
                 <circle cx="20" cy="50" r="4" fill="#6D28D9" class="pulse-circle" />
@@ -362,7 +386,7 @@
 
               <!-- 2b. Recommendation Algorithm (Right of Backend) -->
               <g class="box-hover" transform="translate(620, 300)">
-                <rect x="0" y="0" width="180" height="100" rx="12" fill="url(#gradBox)" stroke="rgba(255,255,255,0.2)" stroke-width="1" />
+                <rect x="0" y="0" width="180" height="100" rx="12" fill="url(#gradBox)" stroke="rgba(255,255,255,0.4)" stroke-width="1" />
                 <text x="90" y="35" text-anchor="middle" fill="#fff" font-weight="bold" font-size="13" letter-spacing="0.5">RECOMMENDATION</text>
                 <text x="90" y="50" text-anchor="middle" fill="#fff" font-weight="bold" font-size="13" letter-spacing="0.5">ALGORITHM</text>
                 <text x="90" y="70" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="10">Content-Based</text>
@@ -372,7 +396,7 @@
 
               <!-- 3. Database (MySQL) -->
               <g class="box-hover" transform="translate(150, 500)">
-                <rect x="0" y="0" width="200" height="80" rx="12" fill="url(#gradBox)" stroke="rgba(255,255,255,0.2)" stroke-width="1" />
+                <rect x="0" y="0" width="200" height="80" rx="12" fill="url(#gradBox)" stroke="rgba(255,255,255,0.4)" stroke-width="1" />
                 <text x="100" y="35" text-anchor="middle" fill="#fff" font-weight="bold" font-size="13" letter-spacing="1">DATABASE</text>
                 <text x="100" y="55" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="11">MySQL</text>
                 <circle cx="180" cy="40" r="4" fill="#0891B2" class="pulse-circle" />
@@ -380,7 +404,7 @@
 
               <!-- 4. AI Engine (OpenAI) -->
               <g class="box-hover" transform="translate(450, 500)">
-                <rect x="0" y="0" width="200" height="80" rx="12" fill="url(#gradBox)" stroke="rgba(255,255,255,0.2)" stroke-width="1" />
+                <rect x="0" y="0" width="200" height="80" rx="12" fill="url(#gradBox)" stroke="rgba(255,255,255,0.4)" stroke-width="1" />
                 <text x="100" y="35" text-anchor="middle" fill="#fff" font-weight="bold" font-size="13" letter-spacing="1">AI ENGINE</text>
                 <text x="100" y="55" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="11">OpenAI GPT-4</text>
                 <circle cx="20" cy="40" r="4" fill="#D97706" class="pulse-circle" />
@@ -393,6 +417,235 @@
               <text x="480" y="480" fill="rgba(255,255,255,0.4)" font-size="10" font-style="italic">API Call</text>
 
           </svg>
+        </div>
+      </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FIFTH PAGE SECTION - ChatGPTTasks Project -->
+  <section class="page-section" id="chatgpt-tasks">
+    <div class="project-page-container">
+      
+      <!-- Project Header -->
+      <div class="project-header-full">
+        <h2>ChatGPTTasks</h2>
+        <h3>Automated OpenAI Assistant Batch Processing System</h3>
+      </div>
+
+      <div class="project-content-split">
+        <!-- Left Side: Info & Tech -->
+        <div class="project-info-side">
+          
+          <div class="glass-card project-intro">
+            <p>
+              <strong>ChatGPTTasks</strong> is a Python automation framework designed to streamline batch processing 
+              workflows using OpenAI's Assistant API. The system automates the entire lifecycle of AI-assisted task 
+              evaluation, from assistant creation to result compilation.
+            </p>
+            <p>
+              Built for educational content assessment, the tool processes Excel-based test sets, creates AI assistants 
+              with custom instructions, manages conversation threads, and generates comprehensive evaluation reports 
+              with automated file handling and cleanup.
+            </p>
+            
+            <div class="project-links-row">
+              <a href="https://github.com/JackTao888" target="_blank" rel="noreferrer" class="project-btn">
+                <span>View on GitHub</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="tech-stack-compact">
+            <div class="tech-pill">
+              <span class="tech-cat">Core</span>
+              <span class="tech-val">Python 3.11</span>
+            </div>
+            <div class="tech-pill">
+              <span class="tech-cat">API</span>
+              <span class="tech-val">OpenAI Assistants</span>
+            </div>
+            <div class="tech-pill">
+              <span class="tech-cat">Data</span>
+              <span class="tech-val">Pandas • Excel</span>
+            </div>
+            <div class="tech-pill">
+              <span class="tech-cat">Build</span>
+              <span class="tech-val">PyInstaller</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Side: Diagram -->
+        <div class="project-visual-side">
+          <div class="diagram-glass-container">
+            <svg width="100%" height="100%" viewBox="0 0 900 700" xmlns="http://www.w3.org/2000/svg" class="animated-graph">
+              <defs>
+                <linearGradient id="gradBox2" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:rgba(40,40,50,0.85)" />
+                  <stop offset="100%" style="stop-color:rgba(30,30,40,0.75)" />
+                </linearGradient>
+                <linearGradient id="gradStroke2" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" style="stop-color:#6D28D9" />
+                  <stop offset="100%" style="stop-color:#0891B2" />
+                </linearGradient>
+                <filter id="glowFancy2" x="-50%" y="-50%" width="200%" height="200%">
+                  <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+                  <feComposite in="coloredBlur" in2="SourceGraphic" operator="over"/>
+                </filter>
+                
+                <!-- Animations -->
+                <style>
+                  .flow-line2 { 
+                    stroke-dasharray: 10; 
+                    animation: flow 2s linear infinite; 
+                    opacity: 0.6;
+                  }
+                  .box-hover2 { transition: all 0.3s ease; cursor: pointer; }
+                  .box-hover2:hover rect { stroke: white; stroke-width: 2; stroke-opacity: 0.8; }
+                  .box-hover2:hover text { fill: white; }
+                  
+                  @keyframes flow {
+                    to { stroke-dashoffset: -20; }
+                  }
+                  
+                  .pulse-circle2 { animation: pulse 3s infinite; }
+                  @keyframes pulse {
+                    0% { opacity: 0.3; r: 5; }
+                    50% { opacity: 0.8; r: 7; }
+                    100% { opacity: 0.3; r: 5; }
+                  }
+                </style>
+              </defs>
+
+              <!-- CONNECTORS -->
+              <g stroke="url(#gradStroke2)" stroke-width="2" fill="none">
+                <!-- Config -> Main Script (horizontal) -->
+                <path d="M 200 140 L 600 140" class="flow-line2" />
+                
+                <!-- Main Script -> Mode Selector (vertical down, then left) -->
+                <path d="M 600 90 L 600 150 L 450 150 L 450 200" class="flow-line2" />
+                
+                <!-- Mode Selector -> Text Mode (Left, horizontal) -->
+                <path d="M 400 225 L 200 225" class="flow-line2" style="animation-delay: 0.3s" />
+                
+                <!-- Mode Selector -> Function Mode (Right, horizontal) -->
+                <path d="M 500 225 L 700 225" class="flow-line2" style="animation-delay: 0.3s" />
+                
+                <!-- Mode Selector -> Assistant Methods (vertical down, aligned) -->
+                <path d="M 450 250 L 500 280" class="flow-line2" />
+                
+                <!-- Assistant Methods -> Thread Operations (vertical down) -->
+                <path d="M 500 330 L 500 360" class="flow-line2" />
+                
+                <!-- Thread Operations -> Run & Process (vertical down) -->
+                <path d="M 500 410 L 500 440" class="flow-line2" />
+                
+                <!-- Run & Process -> Output (vertical down) -->
+                <path d="M 500 490 L 500 520" class="flow-line2" />
+              </g>
+
+              <!-- NODES -->
+              
+              <!-- 1. Config & Input Files (Top Left) -->
+              <g class="box-hover2" transform="translate(150, 10)">
+                <rect x="0" y="0" width="100" height="130" rx="10" fill="url(#gradBox2)" stroke="rgba(255,255,255,0.4)" stroke-width="1" />
+                <text x="50" y="30" text-anchor="middle" fill="#fff" font-weight="bold" font-size="11" letter-spacing="0.5">CONFIG</text>
+                <text x="50" y="50" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">config.py</text>
+                <text x="50" y="70" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">Excel Files</text>
+                <text x="50" y="90" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">Prompts</text>
+                <text x="50" y="110" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">API Key</text>
+                <circle cx="80" cy="20" r="3" fill="#BE185D" class="pulse-circle2" />
+              </g>
+
+              <!-- 2. Main Python Script (Top Center-Right) -->
+              <g class="box-hover2" transform="translate(500, 10)">
+                <rect x="0" y="0" width="200" height="80" rx="12" fill="url(#gradBox2)" stroke="rgba(255,255,255,0.4)" stroke-width="1" />
+                <text x="100" y="35" text-anchor="middle" fill="#fff" font-weight="bold" font-size="14" letter-spacing="1">MAIN SCRIPT</text>
+                <text x="100" y="55" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="11">chatgpt_tasks.py</text>
+                <circle cx="180" cy="40" r="4" fill="#BE185D" class="pulse-circle2" />
+              </g>
+
+              <!-- 3a. Text Mode (Left, below Config) -->
+              <g class="box-hover2" transform="translate(150, 200)">
+                <rect x="0" y="0" width="100" height="50" rx="10" fill="url(#gradBox2)" stroke="rgba(255,255,255,0.4)" stroke-width="1" />
+                <text x="50" y="30" text-anchor="middle" fill="#fff" font-weight="bold" font-size="11">TEXT</text>
+                <text x="50" y="45" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">Mode</text>
+              </g>
+
+              <!-- 3. Mode Selector (Center, aligned with vertical flow) -->
+              <g class="box-hover2" transform="translate(400, 200)">
+                <rect x="0" y="0" width="100" height="50" rx="12" fill="url(#gradBox2)" stroke="rgba(255,255,255,0.4)" stroke-width="1" />
+                <text x="50" y="20" text-anchor="middle" fill="#fff" font-weight="bold" font-size="11" letter-spacing="0.5">MODE</text>
+                <text x="50" y="35" text-anchor="middle" fill="#fff" font-weight="bold" font-size="11" letter-spacing="0.5">SELECTOR</text>
+                <text x="50" y="48" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="8">'function' | 'text'</text>
+                <circle cx="80" cy="15" r="3" fill="#7C3AED" class="pulse-circle2" />
+              </g>
+
+              <!-- 3b. Function Mode (Right) -->
+              <g class="box-hover2" transform="translate(650, 200)">
+                <rect x="0" y="0" width="100" height="50" rx="10" fill="url(#gradBox2)" stroke="rgba(255,255,255,0.4)" stroke-width="1" />
+                <text x="50" y="30" text-anchor="middle" fill="#fff" font-weight="bold" font-size="11">FUNCTION</text>
+                <text x="50" y="45" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">Mode</text>
+              </g>
+
+              <!-- 4. Assistant Methods (Center, below Mode Selector) -->
+              <g class="box-hover2" transform="translate(400, 280)">
+                <rect x="0" y="0" width="200" height="100" rx="12" fill="url(#gradBox2)" stroke="rgba(255,255,255,0.4)" stroke-width="1" />
+                <text x="100" y="30" text-anchor="middle" fill="#fff" font-weight="bold" font-size="13" letter-spacing="0.5">ASSISTANT</text>
+                <text x="100" y="45" text-anchor="middle" fill="#fff" font-weight="bold" font-size="13" letter-spacing="0.5">METHODS</text>
+                <text x="100" y="65" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="10">create_assistant()</text>
+                <text x="100" y="80" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="10">upload_files()</text>
+                <text x="100" y="95" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="10">delete_assistant()</text>
+                <circle cx="20" cy="50" r="4" fill="#6D28D9" class="pulse-circle2" />
+              </g>
+
+              <!-- 5. Thread Operations (Center, below Assistant Methods) -->
+              <g class="box-hover2" transform="translate(400, 360)">
+                <rect x="0" y="0" width="200" height="100" rx="12" fill="url(#gradBox2)" stroke="rgba(255,255,255,0.4)" stroke-width="1" />
+                <text x="100" y="30" text-anchor="middle" fill="#fff" font-weight="bold" font-size="13" letter-spacing="0.5">THREAD</text>
+                <text x="100" y="45" text-anchor="middle" fill="#fff" font-weight="bold" font-size="13" letter-spacing="0.5">OPERATIONS</text>
+                <text x="100" y="65" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="10">create_thread()</text>
+                <text x="100" y="80" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="10">create_message()</text>
+                <text x="100" y="95" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="10">delete_thread()</text>
+                <circle cx="180" cy="50" r="4" fill="#0891B2" class="pulse-circle2" />
+              </g>
+
+              <!-- 6. Run & Process (Center, below Thread Operations) -->
+              <g class="box-hover2" transform="translate(400, 440)">
+                <rect x="0" y="0" width="200" height="100" rx="12" fill="url(#gradBox2)" stroke="rgba(255,255,255,0.4)" stroke-width="1" />
+                <text x="100" y="30" text-anchor="middle" fill="#fff" font-weight="bold" font-size="13" letter-spacing="0.5">RUN &amp; PROCESS</text>
+                <text x="100" y="50" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="10">run_thread()</text>
+                <text x="100" y="65" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="10">calltools()</text>
+                <text x="100" y="80" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="10">Tool Outputs</text>
+                <text x="100" y="95" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="10">Wait Completion</text>
+                <circle cx="20" cy="50" r="4" fill="#059669" class="pulse-circle2" />
+              </g>
+
+              <!-- 7. Output & Results (Center, below Run & Process) -->
+              <g class="box-hover2" transform="translate(400, 520)">
+                <rect x="0" y="0" width="200" height="80" rx="12" fill="url(#gradBox2)" stroke="rgba(255,255,255,0.4)" stroke-width="1" />
+                <text x="100" y="30" text-anchor="middle" fill="#fff" font-weight="bold" font-size="13" letter-spacing="0.5">OUTPUT</text>
+                <text x="100" y="45" text-anchor="middle" fill="#fff" font-weight="bold" font-size="13" letter-spacing="0.5">RESULTS</text>
+                <text x="100" y="60" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="10">save_all_messages()</text>
+                <text x="100" y="75" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="10">save_excel()</text>
+                <circle cx="180" cy="40" r="4" fill="#D97706" class="pulse-circle2" />
+              </g>
+
+              <!-- Flow Labels -->
+              <text x="350" y="145" fill="rgba(255,255,255,0.4)" font-size="10" font-style="italic">Load Config</text>
+              <text x="500" y="180" fill="rgba(255,255,255,0.4)" font-size="10" font-style="italic">Select Mode</text>
+              <text x="300" y="225" fill="rgba(255,255,255,0.4)" font-size="9" font-style="italic">Text</text>
+              <text x="600" y="225" fill="rgba(255,255,255,0.4)" font-size="9" font-style="italic">Function</text>
+              <text x="475" y="280" fill="rgba(255,255,255,0.4)" font-size="10" font-style="italic">API Methods</text>
+              <text x="500" y="360" fill="rgba(255,255,255,0.4)" font-size="10" font-style="italic">Thread Ops</text>
+              <text x="500" y="440" fill="rgba(255,255,255,0.4)" font-size="10" font-style="italic">Execute</text>
+              <text x="500" y="520" fill="rgba(255,255,255,0.4)" font-size="10" font-style="italic">Save</text>
+
+            </svg>
           </div>
         </div>
       </div>
@@ -703,6 +956,205 @@
       }
       scrollTimeout = requestAnimationFrame(handleScrollAnimations);
     }, { passive: true });
+
+    // ============================
+    // CV Display & EasyCV Integration
+    // ============================
+    
+    // CV Data Structure (can be replaced with EasyCV generated data)
+    const cvData = {
+      name: "Ruijie Tao",
+      title: "Machine Learning Engineer | AI Researcher | Full Stack Developer",
+      email: "taoruijie666@gmail.com",
+      phone: "",
+      summary: "Passionate about pushing the boundaries of technology and design. Focus on NLP, LLM, GenAI, and Full Stack Development.",
+      education: [
+        {
+          degree: "Master of Computer Science",
+          school: "Johns Hopkins University",
+          period: "2025-Current"
+        },
+        {
+          degree: "Bachelor of Applied Mathematics",
+          school: "UC Santa Barbara",
+          period: "2022-2025"
+        }
+      ],
+      experience: [
+        {
+          role: "Lead Developer",
+          company: "Heart Echo",
+          period: "2024",
+          description: "Developed AI-powered mental health companion using Next.js, Flask, and OpenAI API"
+        }
+      ],
+      skills: [
+        "Java",
+        "Python",
+        "C++",
+        "Flask",
+        "Nginx",
+        "Shell",
+        "AWS",
+        "Transformer",
+        "PyTorch",
+        "LLM-SFT",
+        "LangChain",
+        "Spring-Boot",
+        "JavaScript",
+        "Rabbit-MQ",
+        "Minio",
+        "MySQL",
+        "PostgreSQL",
+        "Redis",
+        "Socket",
+        "Docker"
+      ],
+      projects: [
+        {
+          name: "Web-App Agent",
+          organization: "Independent",
+          period: "2022.11–2025.08",
+          description: "Designed an agentic system with tool-calling architecture, and iterative development workflows. Built comprehensive file system operations with sandbox security, TODO management, and server lifecycle control. Designed modular tools supporting Jest/Supertest API testing and Playwright browser automation. Successfully deployed multiple full-stack applications including SQL-based task management systems with CRUD operations. Demonstrated advanced agentic programming concepts including conversation history management, multi-turn reasoning for complex tasks.",
+          tech: "Agentic Systems, Tool-Calling, Jest, Supertest, Playwright, Full-Stack"
+        },
+        {
+          name: "Auto Eval pipeline",
+          organization: "OpenEval Research Team",
+          period: "2024.03–2024.06",
+          description: "Developed an automated evaluation pipeline leveraging OpenAI's Assistants and Threads APIs to perform large-scale batch assessment of articles. Engineered the workflow to dynamically segment long-form content, invoke parallelized API calls for evaluation, and synthesize quality scores with data-driven feedback and improvement suggestions.",
+          tech: "OpenAI API, Assistants API, Threads API, Batch Processing, Data Analysis"
+        },
+        {
+          name: "NMT Optimizing Team (Hybrid)",
+          organization: "",
+          period: "2022.07–2022.11",
+          description: "Developed a custom plugin module in the translation procedure to significantly boost throughput. Implemented a queue mechanism for aggregating numerous short translations into a single socket request package for NMT translation module. Contributed to system design and integrated components using Flask & Nginx to ensure end-to-end functionality. Cooperated with others to complete the final integration testing. Applied Linux multi-threaded programming with conditional variables and mutex locks to carry out inter-thread synchronization and mutex.",
+          tech: "Flask, Nginx, Linux Multi-threading, Socket Programming, System Integration"
+        },
+        {
+          name: "Heart Echo",
+          organization: "",
+          period: "2024",
+          description: "Developed an AI-powered anonymous mental health companion platform to provide accessible emotional support. Built a full-stack application with React/Next.js frontend and Flask backend, integrating OpenAI's GPT models for empathetic conversational AI. Implemented secure anonymous user sessions, real-time chat functionality, and community features including posts, comments, and likes. Designed and deployed a recommendation algorithm for personalized content delivery. Ensured data privacy and security with HTTPS encryption and anonymous session management.",
+          tech: "Next.js, Tailwind CSS, TypeScript, Flask, Python, MySQL, OpenAI API, RESTful API"
+        }
+      ]
+    };
+
+    function renderCV() {
+      const cvDisplay = document.getElementById('cvDisplay');
+      if (!cvDisplay) return;
+
+      cvDisplay.innerHTML = `
+        <div class="cv-section">
+          <div class="cv-name">${cvData.name}</div>
+          <div class="cv-title">${cvData.title}</div>
+          <div class="cv-contact">
+            <span>📧 ${cvData.email}</span>
+            <span>🔗 <a href="https://github.com/JackTao888" target="_blank">GitHub</a></span>
+            <span>💼 <a href="https://linkedin.com/in/ruijie-tao" target="_blank">LinkedIn</a></span>
+          </div>
+        </div>
+
+        <div class="cv-section">
+          <h4 class="cv-section-title">Summary</h4>
+          <p>${cvData.summary}</p>
+        </div>
+
+        <div class="cv-section">
+          <h4 class="cv-section-title">Education</h4>
+          ${cvData.education.map(edu => `
+            <div class="cv-item">
+              <div class="cv-item-header">
+                <strong>${edu.degree}</strong>
+                <span class="cv-period">${edu.period}</span>
+              </div>
+              <div class="cv-item-org">${edu.school}</div>
+            </div>
+          `).join('')}
+        </div>
+
+        <div class="cv-section">
+          <h4 class="cv-section-title">Experience</h4>
+          ${cvData.experience.map(exp => `
+            <div class="cv-item">
+              <div class="cv-item-header">
+                <strong>${exp.role}</strong>
+                <span class="cv-period">${exp.period}</span>
+              </div>
+              <div class="cv-item-org">${exp.company}</div>
+              <p>${exp.description}</p>
+            </div>
+          `).join('')}
+        </div>
+
+        <div class="cv-section">
+          <h4 class="cv-section-title">Skills</h4>
+          <div class="cv-skills">
+            ${cvData.skills.map(skill => `<span class="cv-skill-tag">${skill}</span>`).join('')}
+          </div>
+        </div>
+
+        <div class="cv-section">
+          <h4 class="cv-section-title">Projects</h4>
+          ${cvData.projects.map(proj => `
+            <div class="cv-item">
+              <div class="cv-item-header">
+                <strong>${proj.name}</strong>
+                ${proj.period ? `<span class="cv-period">${proj.period}</span>` : ''}
+              </div>
+              ${proj.organization ? `<div class="cv-item-org">${proj.organization}</div>` : ''}
+              <p>${proj.description}</p>
+              ${proj.tech ? `<div class="cv-tech">${proj.tech}</div>` : ''}
+            </div>
+          `).join('')}
+        </div>
+      `;
+    }
+
+    function downloadCV() {
+      // This can be integrated with EasyCV's export functionality
+      // For now, opens a print dialog or can be extended to generate PDF
+      window.print();
+      // Alternative: Generate PDF using jsPDF or similar library
+    }
+
+    // Initialize CV when page loads and About section is visible
+    document.addEventListener('DOMContentLoaded', () => {
+      renderCV();
+      
+      // Re-render when About section becomes visible
+      const aboutSection = document.getElementById('about');
+      const cvDisplay = document.getElementById('cvDisplay');
+      if (aboutSection && cvDisplay) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting && cvDisplay.innerHTML.includes('Loading')) {
+              renderCV();
+            }
+          });
+        }, { threshold: 0.1 });
+        
+        observer.observe(aboutSection);
+      }
+    });
+
+    /* 
+     * EasyCV Integration Notes:
+     * 
+     * If you want to use EasyCV for CV editing/management:
+     * 1. Install: npm install easycv
+     * 2. Import in your script or use via CDN
+     * 3. Replace cvData with EasyCV's data structure
+     * 4. Use EasyCV's render() method to display the CV
+     * 5. Use EasyCV's export() method for PDF generation
+     * 
+     * Example EasyCV usage:
+     * const easyCV = new EasyCV({ container: '#cvDisplay' });
+     * easyCV.load(data); // Load CV data
+     * easyCV.render(); // Render CV
+     */
   </script>
 </body>
 </html>
