@@ -18,7 +18,7 @@ html, body {
 
 body {
   position: relative;
-  background-image: url('../9bcc968e7170e043fec5178b86402f8f.jpg');
+  background-image: url('../bg_img.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -1225,4 +1225,5 @@ body {
     font-size: 0.8rem;
   }
 }
+
 
