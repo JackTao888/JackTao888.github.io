@@ -10,7 +10,7 @@ html {
 
 html, body {
   width: 100%;
-  background: #000e2b;
+  background: #000000;
   color: #f5f5f5;
   font-family: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   overflow-x: hidden;
@@ -18,6 +18,11 @@ html, body {
 
 body {
   position: relative;
+  background-image: url('../9bcc968e7170e043fec5178b86402f8f.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 /* ========================
@@ -27,20 +32,23 @@ body {
 #matrixCanvas {
   position: fixed;
   inset: 0;
-  z-index: 1; /* above black bg, below content */
+  z-index: 1; /* above background image, below blur */
   width: 100vw;
   height: 100vh;
   display: block;
   pointer-events: none;
 }
 
-/* Blur overlay to enhance the colorful blur effect */
+/* Blur overlay with same effect as dropdown */
 .matrix-blur {
   position: fixed;
   inset: 0;
-  backdrop-filter: blur(40px);
+  background: rgba(0, 0, 0, 0.8); /* Dark overlay to keep background dark */
+  backdrop-filter: blur(50px) saturate(120%);
+  -webkit-backdrop-filter: blur(50px) saturate(120%);
   z-index: 2;
   pointer-events: none;
+  display: block;
 }
 
 /* Canvas behind everything */
@@ -91,8 +99,8 @@ body {
 
 .nav a {
   text-decoration: none;
-  color: inherit;
-  opacity: 0.7;
+  color: #ffffff;
+  opacity: 1;
   transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
@@ -103,8 +111,90 @@ body {
 
 .nav-brand {
   font-weight: 600;
-  opacity: 0.9;
+  color: #ffffff;
+  opacity: 1;
   font-size: 2rem;
+}
+
+/* Navigation Dropdown */
+.nav-item-dropdown {
+  position: relative;
+}
+
+.nav-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-10px);
+  margin-top: 0.5rem;
+  min-width: 280px;
+  background: rgba(80, 80, 90, 0.25);
+  backdrop-filter: blur(50px) saturate(120%);
+  -webkit-backdrop-filter: blur(50px) saturate(120%);
+  border: none;
+  border-radius: 12px;
+  padding: 0.5rem;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.nav-item-dropdown:hover .nav-dropdown {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  position: relative;
+  gap: 1rem;
+}
+
+.dropdown-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+
+.dropdown-item > div:first-child {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.dropdown-title {
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 0.9rem;
+  line-height: 1.3;
+}
+
+.dropdown-desc {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.4;
+}
+
+.dropdown-chevron {
+  color: rgba(255, 255, 255, 0.5);
+  flex-shrink: 0;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.dropdown-item:hover .dropdown-chevron {
+  color: rgba(255, 255, 255, 0.9);
+  transform: translateX(2px);
 }
 
 /* Center hero section */
@@ -113,8 +203,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 2rem;
-  max-width: 1200px;
+  gap: 5rem;
+  max-width: 1400px;
   margin: 0 auto;
   padding-inline: 8px;
 }
@@ -127,7 +217,8 @@ body {
   font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 0.18em;
-  opacity: 0.65;
+  color: #ffffff;
+  opacity: 1;
   margin-bottom: 1rem;
 }
 
@@ -135,13 +226,15 @@ body {
   font-size: clamp(3rem, 5.5vw, 4rem);
   line-height: 1.05;
   font-weight: 700;
+  color: #ffffff;
   margin-bottom: 1.25rem;
 }
 
 .hero-subtitle {
   font-size: 1.25rem;
   line-height: 1.5;
-  opacity: 0.8;
+  color: #ffffff;
+  opacity: 1;
   max-width: 30rem;
 }
 
@@ -151,7 +244,8 @@ body {
   flex-wrap: wrap;
   gap: 1.5rem;
   font-size: 0.95rem;
-  opacity: 0.75;
+  color: #ffffff;
+  opacity: 1;
 }
 
 .hero-meta div {
@@ -160,11 +254,16 @@ body {
   gap: 0.25rem;
 }
 
+.hero-meta span {
+  color: #ffffff;
+}
+
 .hero-meta span.label-small {
   font-size: 0.8rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  opacity: 0.6;
+  color: #ffffff;
+  opacity: 1;
 }
 
 /* Right side "binary / badge" block to echo his vibe */
@@ -176,6 +275,24 @@ body {
   opacity: 0.65;
   pointer-events: none;
   user-select: none;
+}
+
+.hero-image-circle {
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  flex-shrink: 0;
+  align-self: center;
+}
+
+.hero-image-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .hero-aside .badge {
@@ -208,15 +325,10 @@ body {
 .footer {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   font-size: 0.9rem;
-  opacity: 0.7;
-}
-
-.footer-left {
-  display: flex;
-  flex-direction: column;
-  gap: 0.1rem;
+  color: #ffffff;
+  opacity: 1;
 }
 
 .footer-right {
@@ -225,9 +337,9 @@ body {
 }
 
 .footer a {
-  color: inherit;
+  color: #ffffff;
   text-decoration: none;
-  opacity: 0.7;
+  opacity: 1;
   transition: opacity 0.2s ease;
 }
 
